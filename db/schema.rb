@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
+
 ActiveRecord::Schema.define(version: 2023_10_17_065507) do
 
 
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 2023_10_17_065507) do
   end
 
 
+
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.string "post_code", null: false
@@ -51,6 +53,7 @@ ActiveRecord::Schema.define(version: 2023_10_17_065507) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
 
 
   create_table "admins", force: :cascade do |t|
@@ -64,6 +67,7 @@ ActiveRecord::Schema.define(version: 2023_10_17_065507) do
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
+
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "customer_id", null: false
@@ -93,6 +97,7 @@ ActiveRecord::Schema.define(version: 2023_10_17_065507) do
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
+
 
 
   create_table "genres", force: :cascade do |t|
