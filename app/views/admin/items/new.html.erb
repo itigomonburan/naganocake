@@ -1,29 +1,65 @@
 <div class="container takasa">
   <div class="row row-new">
 
+  <h2>商品新規登録</h2><br>
 
-    <h2>商品新規登録</h2><br>
+    <div class="row justify-content-center">
+      <%= form_with(model: [ :admin, @item ]) do |f| %>
+        <table class="table table-borderless">
 
-  <div class="row justify-content-center">
-  <%= form_with(model: [ :admin, @item ]) do |f| %>
-    <table class="table table-borderless">
-      <tr>
-        <td><%= f.label :商品画像 %></td>
-        <td><%= f.file_field :image, accept: "image/*", class: "form-control-file" %></td>
-        <td></td>
-      </tr>
+          <tr>
+            <td><%= f.label :商品画像 %></td>
+            <td><%= f.file_field :image, accept: "image/*", class: "form-control-file" %></td>
+            <td></td>
+          </tr>
 
-      <tr>
-        <td><%= f.label :商品名 %></td>
-        <td><%= f.text_field :name, placeholder: "商品名", class: "form-control" %></td>
-        <td></td>
-      </tr>
+          <tr>
+            <td><%= f.label :商品名 %></td>
+            <td><%= f.text_field :name, placeholder: "商品名", class: "form-control" %></td>
+            <td></td>
+          </tr>
 
+          <tr>
+            <td><%= f.label :商品説明 %></td>
+            <td><%= f.text_area :name, placeholder: "ここに説明文を記述します", class: "form-control" %></td>
+            <td></td>
+          </tr>
 
+          <tr>
+            <td><%= f.label :ジャンル %></td>
+            <td><%= f.text_field :name, placeholder: "商品名", class: "form-control" %></td>
+            <td></td>
+          </tr>
 
+          <%= f.select :name, ['sample1', 'sample2', 'sample3'], {include_blank: '選択してください'},
+            class: 'sample' %>
 
+          <tr>
+            <label for="select1a">ジャンル</label>
+            <select id="select1a" class="form-control">
+              <option>ケーキ</option>
+              <option>プリン</option>
+              <option>焼き菓子</option>
+              <option>キャンディ</option>
+            </select>
+          </tr>
 
+          <tr>
+            <td><%= f.label :税抜価格 %></td>
+            <td><%= f.text_field :name, placeholder: "1,000", class: "form-control" %>円</td>
+            <td></td>
+          </tr>
 
+          <tr>
+            <td><%= f.label :販売ステータス %></td>
+              <%= f.radio_button :is_active, true %>
+              <%= f.label :is_active, "販売中", value: true %>
+              <%= f.radio_button :is_active, false %>
+              <%= f.label :is_active, "販売停止中", value: false %>
+          </tr>
 
+      <% end %>
+    </div>
 
-  <% end %>
+  </div>
+</div>
