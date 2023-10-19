@@ -4,7 +4,7 @@
   <h2>商品新規登録</h2><br>
 
     <div class="row justify-content-center">
-      <%= form_with(model: [ :admin, @item ]) do |f| %>
+      <%= form_with model: @item, url: admin_items_path do |f| %>
         <table class="table table-borderless">
 
           <tr>
@@ -21,28 +21,19 @@
 
           <tr>
             <td><%= f.label :商品説明 %></td>
-            <td><%= f.text_area :name, placeholder: "ここに説明文を記述します", class: "form-control" %></td>
+            <td><%= f.text_area :description, placeholder: "ここに説明文を記述します", class: "form-control", rows:5 %></td>
             <td></td>
           </tr>
 
           <tr>
-            <td><%= f.label :ジャンル %></td>
-            <td>
-              <select id="select1a" class="form-control">
-              <option>ケーキ</option>
-              <option>プリン</option>
-              <option>焼き菓子</option>
-              <option>キャンディ</option>
-            </select>
-            </td>
+            <td><%#= f.label :ジャンル %></td>
+            <td><%#= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--", class: "form-control" %></td>
+            <td></td>
           </tr>
-
-          <%= f.select :name, ['sample1', 'sample2', 'sample3'], {include_blank: '選択してください'},
-            class: 'sample' %>
 
           <tr>
             <td><%= f.label :税抜価格 %></td>
-            <td><%= f.text_field :name, placeholder: "1,000", class: "form-control" %>円</td>
+            <td><%= f.text_field :price, placeholder: "1,000", class: "form-control" %>円</td>
             <td></td>
           </tr>
 
@@ -56,8 +47,13 @@
             </td>
           </tr>
 
-          <tr>
-          <td><%= f.submit '新規登録' %></td>
+        </table>
+
+          <!--<div class="actions text-center">-->
+          <!--<tr>-->
+          <%= f.submit '新規登録', class: "button btn btn-success center-block" %>
+          <!--</tr>-->
+          <!--</div>-->
 
       <% end %>
     </div>

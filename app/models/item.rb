@@ -2,16 +2,21 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
+  def get_image(width, height)
+    unless image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+      image.variant(resize_to_limit: [width, height]).processed
+  end
 
-  belongs_to :genle
+  belongs_to :genre
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
 
-  validates :image, presence:true
+  # validates :image, presence:true
   validates :name, presence:true, uniqueness: true
   validates :description, presence:true
-  validates :price_without_tax, presence:true, numericality: {only_integer: true, greater_than_or_equal_to: 1}
-
-  enum is_active: { 販売中: true, 販売停止中: false }
+  validates :price, presence:true, numericality: {only_integer: true, greater_than_or_equal_to: 1}
 
 end
