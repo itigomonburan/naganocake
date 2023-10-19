@@ -28,4 +28,10 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
   resources :genres, only: [:index, :create, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # 管理者ルーティング
+    namespace :admin do
+    resources :items, except: [:destroy]
+  end
+
 end
