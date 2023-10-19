@@ -26,8 +26,8 @@
           </tr>
 
           <tr>
-            <td><%#= f.label :ジャンル %></td>
-            <td><%#= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--", class: "form-control" %></td>
+            <td><%= f.label :ジャンル %></td>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--", class: "form-control" %></td>
             <td></td>
           </tr>
 

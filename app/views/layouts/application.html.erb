@@ -11,6 +11,7 @@
   </head>
 
   <body>
+
     <header>
     <% if customer_signed_in? %>
       <li>
@@ -25,6 +26,8 @@
       </li>
     <% end %>
   </header>
+    <%= flash[:error] %>
+    <%= flash[:notice] %>
     <%= yield %>
   </body>
 </html>
