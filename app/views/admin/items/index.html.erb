@@ -1,1 +1,17 @@
-i
+<div class="container">
+  <div class="row">
+
+      <h2>商品一覧</h2><br>
+
+    <table class="table">
+      <% @items.each do |item| %>
+        <p>商品ID:<%= item.id %></p>
+        <p>商品名:<%= item.name %></p>
+        <p>税抜価格:<%= item.price %></p>
+        <p>ジャンル:<%= item.genre_id %></p>
+        <p>ステータス:<%= item.is_active ? '販売中' : '販売停止中' %></p>
+      <% end %>
+    </table>
+
+  </div>
+</div>
