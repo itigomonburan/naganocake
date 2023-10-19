@@ -22,5 +22,24 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     get 'customers/check' => 'customers#check'
     patch 'customers/withdraw' => 'customers#withdraw'
   end
+  
+  namespace :admin do
+    get '/' => 'homes#top'
+  end
+
+  
+    module ClassMethods
+      
+    end
+  
+    module InstanceMethods
+  
+    end
+  
+    def self.included(receiver)
+      receiver.extend         ClassMethods
+      receiver.send :include, InstanceMethods
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+
