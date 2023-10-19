@@ -3,7 +3,12 @@
 class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  
+
+  def update
+    @customer = current_customer
+    @customer.update(customer_params)
+    redirect_to  customers_path
+  end
 
   # GET /resource/sign_up
   # def new
@@ -60,4 +65,15 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  def customer_params
+  params.require(:customer).permit(:last_name,
+                                    :first_name,
+                                    :last_name_kana,
+                                    :first_name_kana,
+                                    :post_code,
+                                    :address,
+                                    :phone_number,
+                                    :email
+                                    )
+  end
 end

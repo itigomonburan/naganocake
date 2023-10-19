@@ -16,9 +16,9 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    get 'customers/mypage' => 'customers#show'
-    get 'customers/information/edit' => 'customers#edit'
-    patch 'customers/information' => 'customers#update'
+    get 'customers' => 'customers#show'
+    get 'customers/edit' => 'customers#edit'
+    patch 'customers' => 'customers#update'
     get 'customers/check' => 'customers#check'
     patch 'customers/withdraw' => 'customers#withdraw'
   end
