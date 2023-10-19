@@ -27,22 +27,18 @@
 
           <tr>
             <td><%= f.label :ジャンル %></td>
-            <td><%= f.text_field :name, placeholder: "商品名", class: "form-control" %></td>
-            <td></td>
-          </tr>
-
-          <%= f.select :name, ['sample1', 'sample2', 'sample3'], {include_blank: '選択してください'},
-            class: 'sample' %>
-
-          <tr>
-            <label for="select1a">ジャンル</label>
-            <select id="select1a" class="form-control">
+            <td>
+              <select id="select1a" class="form-control">
               <option>ケーキ</option>
               <option>プリン</option>
               <option>焼き菓子</option>
               <option>キャンディ</option>
             </select>
+            </td>
           </tr>
+
+          <%= f.select :name, ['sample1', 'sample2', 'sample3'], {include_blank: '選択してください'},
+            class: 'sample' %>
 
           <tr>
             <td><%= f.label :税抜価格 %></td>
@@ -52,11 +48,16 @@
 
           <tr>
             <td><%= f.label :販売ステータス %></td>
+            <td>
               <%= f.radio_button :is_active, true %>
               <%= f.label :is_active, "販売中", value: true %>
-              <%= f.radio_button :is_active, false %>
+              <%= f.radio_button :is_active, false, class:"ml-3" %>
               <%= f.label :is_active, "販売停止中", value: false %>
+            </td>
           </tr>
+
+          <tr>
+          <td><%= f.submit '新規登録' %></td>
 
       <% end %>
     </div>
