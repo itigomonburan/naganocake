@@ -3,9 +3,9 @@
     <div class="col">
       <h2>管理者ログイン</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <table class="mx-auto">
+        <table class="mx-auto table-sm">
           <tr>
-            <td>メールアドレス</td>
+            <td class="w-25">メールアドレス</td>
             <td><%= f.email_field :email, :size=>"50", autofocus: true, autocomplete: "email",placeholder:"sample@example.com" %></td>
           </tr>
           <tr>
@@ -14,7 +14,7 @@
           </tr>
           <tr>
             <td></td>
-            <td><%= f.submit "ログイン", class:"btn btn-primary" %></td>
+            <td><%= f.submit "ログイン", class:"btn btn-primary w-25" %></td>
           </tr>
         </table>
       <% end %>
