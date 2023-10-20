@@ -1,25 +1,30 @@
-<div class="container takasa">
-  <div class="row row-new">
+<div class="container">
+  <div class="row">
 
   <h2>商品詳細</h2><br>
+ <br>
+ <br>
+ <br>
+ <br>
+      <div class = "container .mt-md-5" >
+              <%= image_tag @item.get_image(300,300) %>
 
+           <div>商品名　　　　　<%= @item.name %></div>
+           <br>
+           <div>商品説明　　　　<%= @item.description %></div>
+           <br>
+           <div>商品価格　　　　<%= @item.price.to_s(:delimited) %>円</div>
+           <br>
+           <div>ジャンル　　　　<%= @item.genre.name %></div>
+           <br>
+           <div>ステータス　　　<%= @item.is_active ? '販売中' : '販売停止中' %></div>
 
-  <%= image_tag @item.get_image(100,100) %>
+        </div>
+      </div>
 
-
-<table>
-         <td>商品名</td>
-         <td><%= @item.name %></td>
-         <th>税抜価格</th>
-         <td><%= @item.price.to_s(:delimited) %>円</td>
-         <th>ジャンル</th>
-         <td><%= @item.genre.name %></td>
-         <th>ステータス</th>
-         <td><%= @item.is_active ? '販売中' : '販売停止中' %></td>
-</table>
-
-
-
+         <div class="actions text-center">
+          <%= link_to '編集する', edit_admin_item_path(@item), class: "button btn btn-success center-block" %>
+         </div>
 
   </div>
 </div>

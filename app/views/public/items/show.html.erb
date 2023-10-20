@@ -1,36 +1,29 @@
-<div class="container takasa">
-  <div class="row row-new">
+<div class="container">
+  <div class="row">
+      <div class = "container .mt-md-5" >
+        <br>
+        <br>
+              <%= image_tag @item.get_image(300,300) %>
+          <div class="col-sm-9 offset-sm-6">
+           <div><%= @item.name %></div>
+           <div><%= @item.description %></div>
+           <div>￥<%= @item.add_tax_price.to_s(:delimited) %>（税込）</div>
 
-  <h2>商品詳細</h2><br>
+      <!--カートに入れるボタン-->
+          <% if @item.is_active ==  true %>
+            <%= form_with url: cart_items_path, model: @cart_item do |f| %>
+              <p class="text-danger m-0"><%= notice %></p>
+              <div class="form-group d-flex w-75">
+                <%= f.select :amount, *[1..10], {include_blank: '個数選択'}, class: "form-control mr-4" %>
+                <%= f.hidden_field :item_id, :value => @item.id %>
+                <%= link_to "カートに入れる", cart_items_path(item_id: @item.id), method: :post, class: "button btn btn-success text-nowrap" %>
+              </div>
+            <% end %>
+            <% else %>
+            <h5 class="text-danger">売り切れ</h5>
+          <% end %>
 
-
-  <%= image_tag @item.get_image(100,100) %>
-
-
-<table>
-         <td>商品名</td>
-         <td><%= @item.name %></td>
-         <th>税抜価格</th>
-         <td><%= @item.price.to_s(:delimited) %>円</td>
-         <th>ジャンル</th>
-         <td><%= @item.genre.name %></td>
-         <th>ステータス</th>
-         <td><%= @item.is_active ? '販売中' : '販売停止中' %></td>
-</table>
-
-<!--カートに入れるボタン-->
-  <% if @item.is_active ==  true %>
-    <%= form_with url: cart_items_path, model: @cart_item do |f| %>
-      <p class="text-danger m-0"><%= notice %></p>
-      <div class="form-group d-flex w-75">
-        <%= f.select :amount, *[1..10], {include_blank: '個数選択'}, class: "form-control mr-4" %>
-        <%= f.hidden_field :item_id, :value => @item.id %>
-        <%= f.submit 'カートに入れる', class:"btn btn-success" %>
+          </div>
       </div>
-    <% end %>
-    <% else %>
-    <h5 class="text-danger">売り切れ</h5>
-  <% end %>
-
   </div>
 </div>

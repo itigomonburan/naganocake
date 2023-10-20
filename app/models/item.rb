@@ -11,6 +11,10 @@ class Item < ApplicationRecord
       image.variant(resize_to_limit: [width, height]).processed
   end
 
+# 税込み
+  def add_tax_price
+    (self.price * 1.10).round
+  end
 
   belongs_to :genre
   has_many :cart_items, dependent: :destroy
