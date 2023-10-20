@@ -1,4 +1,4 @@
-<h1>管理者トップ</h1>
+<h1>注文履歴一覧</h1>
 <% if admin_signed_in? %>
   <li>
     <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
@@ -19,10 +19,13 @@
     </tr>
   </thead>
   <tbody>
-    <% orders.each do |order| %>
+    <% @orders.each do |order| %>
       <tr>
         <td><%= link_to order.create_at,order %></td>
-        <td><%= order.customer_id.last_name, order.customer_id.first_name %></td>
+        <td>
+          <%= order.customers.last_name %>
+          <%= order.customers.first_name %>
+        </td>
         <td><%= order.order_details.amount %></td>
         <td><%= order.status %></td>
         <td></td>
@@ -30,3 +33,4 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @orders %>
