@@ -23,6 +23,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     patch 'customers/withdraw' => 'customers#withdraw'
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
+    resources :cart_items
   end
 
 # 管理者ルーティング
@@ -38,5 +39,4 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
   end
 
 end
-  
- 
+
