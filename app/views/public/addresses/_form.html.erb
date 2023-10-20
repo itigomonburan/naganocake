@@ -1,0 +1,30 @@
+<% if @address.errors.any? %>
+  <%= @address.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
+    <%= form_with model: address, method: :post do |f| %>
+      <table>
+        <tr>
+          <td>郵便番号(ハイフンなし)</td>
+          <td><%= f.text_field :post_code,placeholder:"0000000" %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= f.text_field :address,placeholder:"東京都渋谷区代々木神園町0-0" %></td>
+        </tr>
+        <tr>
+          <td>宛名</td>
+          <td><%= f.text_field :name,placeholder:"令和道子" %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
+        </tr>
+      </table>
+      <% end %>
