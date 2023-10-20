@@ -15,7 +15,20 @@ class Customer < ApplicationRecord
   validates :phone_number, presence: true
   validates :address, presence: true
   validates :post_code, presence: true
-  validates :is_active, presence: true
+
+  #顧客フルネーム
+  def full_name
+    self.last_name + " " + self.first_name
+  end
+
+  #会員ステータス
+  def customer_status
+    if is_active == false
+      "退会"
+    else
+      "有効"
+    end
+  end
 
   def active_for_authentication?
     super && (is_active == true)
