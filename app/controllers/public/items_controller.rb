@@ -5,6 +5,8 @@ class Public::ItemsController < ApplicationController
       # ここ
   end
 
-
+  def show
+    @item = Item.find(params[:id])
+  end
 
 end

@@ -21,6 +21,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     patch 'customers' => 'customers#update'
     get 'customers/check' => 'customers#check'
     patch 'customers/withdraw' => 'customers#withdraw'
+    resources :items, only: [:index, :show]
   end
 
 # 管理者ルーティング
