@@ -22,6 +22,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     get 'customers/check' => 'customers#check'
     patch 'customers/withdraw' => 'customers#withdraw'
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :items, only: [:index, :show]
   end
 
 # 管理者ルーティング
@@ -29,4 +30,13 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
   resources :genres, only: [:index, :create, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # 管理者ルーティング
+    namespace :admin do
+    get '/' => 'homes#top'
+    resources :items, except: [:destroy]
+  end
+
 end
+  
+ 
