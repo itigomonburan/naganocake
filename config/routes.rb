@@ -36,6 +36,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     namespace :admin do
     get '/' => 'homes#top'
     resources :items, except: [:destroy]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
 
 end
