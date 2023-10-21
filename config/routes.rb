@@ -21,6 +21,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     patch 'customers' => 'customers#update'
     get 'customers/check' => 'customers#check'
     patch 'customers/withdraw' => 'customers#withdraw'
+    get 'genre/seach' => 'seaches#genre_search'
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :cart_items
