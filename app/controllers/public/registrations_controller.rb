@@ -6,8 +6,12 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   def update
     @customer = current_customer
-    @customer.update(customer_params)
-    redirect_to  customers_path
+    if @customer.update(customer_params)
+      flash[:notice]= "編集成功しました"
+      redirect_to  customers_path
+    else
+      render :edit
+    end
   end
 
   # GET /resource/sign_up

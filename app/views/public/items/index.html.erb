@@ -1,0 +1,36 @@
+<!--顧客側ジャンル検索機能、商品一覧のページ-->
+
+ <div class="container">
+  <div class="row">
+
+    <h2>商品一覧（全<%= @items_all %>件）</h2><br>
+
+    <div class = "container-fluid" >
+      <div class="row">
+
+            <div class="card-deck">
+             <% @items.each do |item| %>
+             <div class = "col-3">
+                <div class="card" style="width: 15rem; height: 100%;">
+                  <%= image_tag item.get_image("200x150!") %>
+                  <div class=”card-body”>
+                   <h5 class=”card-title”><%= link_to item.name, admin_item_path(item.id) %></h5>
+                   <h6 class=”card-subtitle”>￥<%= item.price.to_s(:delimited) %></h6>
+                    <% if item.is_active == true %>
+                      <p class="text-success">販売中</p>
+                    <% else %>
+                      <p class="text-danger">販売停止中です</p>
+                    <% end %>
+                  </div>
+                </div>
+             </div>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= paginate @items %>
+    <!--ここ-->
+
+  </div>
+</div>
