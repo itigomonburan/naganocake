@@ -7,7 +7,7 @@
     <div class = "container-fluid" >
       <div class="row mx-auto">
         <div class = col-5>
-          <%= image_tag @item.get_image(300,300) %>
+          <%= image_tag @item.get_image("300x300!") %>
         </div>
 
         <div class="col-6 offset-1">
@@ -27,12 +27,12 @@
 
             <!--カートに入れるボタン-->
             <% if @item.is_active ==  true %>
-              <%= form_with url: cart_items_path, model: @cart_item do |f| %>
+              <%= form_with url: cart_items_path, model: @cart_item, method: :post do |f| %>
                 <p class="text-danger m-0"><%= notice %></p>
                 <div class="form-group d-flex w-75">
                   <%= f.select :amount, *[1..10], {include_blank: '個数選択'}, class: "form-control mr-4" %>
                   <%= f.hidden_field :item_id, :value => @item.id %>
-                  <%= link_to "カートに入れる", cart_items_path(item_id: @item.id), method: :post, class: "button btn btn-success text-nowrap" %>
+                  <%= f.submit "カートに入れる", class: "button btn btn-success text-nowrap" %>
                 </div>
               <% end %>
               <% else %>
