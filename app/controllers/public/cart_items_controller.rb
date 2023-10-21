@@ -1,7 +1,8 @@
 class Public::CartItemsController < ApplicationController
-  #before_action :authenticate_customer!
+  before_action :authenticate_customer!
   def index
     @cart_items = current_customer.cart_items
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
   
   def update
@@ -18,7 +19,7 @@ class Public::CartItemsController < ApplicationController
   
   def destroy_all
     @cart_items = current_customer.cart_items
-    @cart_items = destroy.all
+    @cart_items.destroy_all
     redirect_to request.referer, notice: 'カートを空にしました。'
   end
   
