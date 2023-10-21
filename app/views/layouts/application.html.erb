@@ -11,23 +11,13 @@
   </head>
 
   <body>
-
-    <header>
-    <% if customer_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_customer_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_customer_session_path %>
-      </li>
-    <% end %>
-  </header>
-    <%= flash[:error] %>
-    <%= flash[:notice] %>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <main>
+      <div class="container">
+        <%= flash[:error] %>
+        <%= flash[:notice] %>
+      </div>
+      <%= yield %>
+    </main>
   </body>
 </html>
