@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
 
   def index
-    @items = Item.page(params[:page]).per(10)
+    @items = Item.page(params[:page]).per(5)
     # ここ
   end
 
@@ -15,15 +15,6 @@ class Admin::ItemsController < ApplicationController
 
   def edit
      @item = Item.find(params[:id])
-  end
-
-  def update
-    @item = Item.find(params[:id])
-    if @item.update(item_params)
-      redirect_to admin_item_path(@item), notice: "変更しました。"
-    else
-      render :edit
-    end
   end
 
   def create
