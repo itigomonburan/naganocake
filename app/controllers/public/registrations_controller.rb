@@ -10,8 +10,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
       flash[:notice]= "編集成功しました"
       redirect_to  customers_path
     else
-      flash[:notice]= "編集失敗しました"
-      redirect_back(fallback_location: root_path)
+      render :edit
     end
   end
 

@@ -3,9 +3,12 @@
     <div class="col">
       <h2>ジャンル編集</h2>
       <%= form_with model: @genre, url: admin_genre_path, method: :patch do |f| %>
-        <%= f.label :ジャンル名 %>
-        <%= f.text_field :name %>
-        <%= f.submit '変更を保存', class: "btn btn-success" %>
+      <%= render "admin/shared/error_messages", resource: @genre %>
+        <table>
+          <td><%= f.label :ジャンル名 %></td>
+          <td><%= f.text_field :name %></td>
+          <td><%= f.submit '変更を保存', class: "btn btn-success" %></td>
+        </table>
       <% end %>
     </div>
   </div>
