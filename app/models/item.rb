@@ -10,6 +10,10 @@ class Item < ApplicationRecord
     end
       image.variant(resize: size).processed
   end
+  
+  def with_tax_price
+    (price * 1.1).floor
+  end
 
 # 税込み
   def add_tax_price
