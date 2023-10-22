@@ -26,7 +26,7 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
     delete 'cart_items' => 'cart_items#destroy_all', as: 'cart_item_destroy_all'
     resources :orders
 
-    get 'genre/seach' => 'seaches#genre_search'
+    get 'genre/search' => 'searches#genre_search'
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :cart_items

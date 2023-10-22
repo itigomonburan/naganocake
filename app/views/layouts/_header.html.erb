@@ -4,6 +4,9 @@
       <a class = "navbar-brand p-3" href="/"><%= image_tag('no_image.jpg') %></a>
       <ul class="navbar-nav ml-auto">
       <% if customer_signed_in? %>
+        <div class = "text-white">
+          ようこそ、<%= current_customer.last_name %>さん!
+        </div>
         <%= link_to "マイページ", customers_path, class:"btn btn-outline-secondary" %>
         <%= link_to "商品一覧", items_path, class:"btn btn-outline-secondary" %>
         <%= link_to "カートページ", cart_items_path, class:"btn btn-outline-secondary" %>
