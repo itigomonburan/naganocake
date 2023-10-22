@@ -1,7 +1,7 @@
 <header class="bg-dark">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class = "container" >
-      <a class = "navbar-brand p-3" href="/"><%= image_tag('no_image.jpg') %></a>
+      <a class = "navbar-brand p-3" href="/"><%= image_tag('no_image.jpg', alt: 'Logo', height: '40', width: '120') %></a>
       <ul class="navbar-nav ml-auto">
       <% if customer_signed_in? %>
         <div class = "text-white">

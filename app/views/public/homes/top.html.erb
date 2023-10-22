@@ -1,11 +1,36 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <p>ようこそながのCAKEへ!<br>
-        このサイトは、ケーキのECサイトになります。<br>
-        会員でない方も商品の閲覧はできますが、<br>
-        購入には会員登録が必要になります。
-      </p>
+
+    <div class = "col-2">
+      <%= render 'public/items/genre', genre: @genres %>
     </div>
+
+    <div class="col-10 mt-2">
+      <div class="card">
+        <%= image_tag "muscat.jpg",class: "card-img" %>
+        <div class="card-img-overlay d-flex">
+          <div class="m-auto">
+            <p class=" text-center bg-light text-secondary">ようこそながのCAKEへ!<br>
+                                このサイトは、ケーキのECサイトになります。<br>
+                                会員でない方も商品の閲覧はできますが、<br>
+                                購入には会員登録が必要になります。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <h4 class="mt-2">新着商品</h4>
+      <div class = "d-flex justify-content-around">
+        <div class="search-items d-flex flex-wrap">
+        <% @items.each do |item| %>
+          <div class="search-item mr-4">
+            <%= image_tag item.image, size: "200x150" %>
+            <p><%= link_to item.name, item_path(item.id) %></p>
+            <p>¥<%= item.price %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 </div>
