@@ -203,6 +203,10 @@ ja:
     models:
       genre: ジャンル名
       address: 配送先
+      item: 商品
+      cart_item: カート内商品
+      order: 注文
+      order_detail: 注文詳細
     attributes:
       genre:
         name: ジャンル名
@@ -210,3 +214,24 @@ ja:
         post_code: 郵便番号
         address: 住所
         name: 宛名
+      item:
+        genre: ジャンル名
+        name: 商品名
+        description: 商品説明
+        price: 税抜価格
+        is_active: 販売ステータス
+        image: 画像
+      cart_item:
+        amount: 数量
+      order:
+        address: 配送先住所
+        post_code: 配送先郵便番号
+        name: 配送先宛名
+        payment_method: 支払い方法
+        status: 注文ステータス
+        shipping_cost: 送料
+        amount_billed: 支払金額
+      order_detail:
+        amount: 個数
+        making_status: 制作ステータス
+        price: 購入時価格（税込み）
