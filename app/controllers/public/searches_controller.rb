@@ -1,4 +1,4 @@
-class SearchesController < ApplicationController
+class Public::SearchesController < ApplicationController
 
   def genre_search
     @genre_id = params[:genre_id]

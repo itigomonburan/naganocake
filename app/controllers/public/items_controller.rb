@@ -1,8 +1,7 @@
 class Public::ItemsController < ApplicationController
 
   def index
-    @items = Item.page(params[:page]).per(5)
-    # ここ
+    @items = Item.page(params[:page]).per(10)
     @genres = Genre.all
     @items_all = Item.count
   end
