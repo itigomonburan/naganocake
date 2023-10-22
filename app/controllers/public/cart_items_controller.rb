@@ -7,7 +7,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    @cart_item = CaetItems.find(params[:id])
+    @cart_item = CartItems.find(params[:id])
     @cart_item.update(cart_item_params)
     redirect_to request.referer, notice: '数量を変更しました。'
   end
@@ -25,23 +25,21 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.new(item_id: params[:item_id], amount: 1)
+
+    @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
     existing_cart_item = CartItem.find_by(item_id: @cart_item.item_id, customer_id: current_customer.id)
-
-    if existing_cart_item
+    if  existing_cart_item.nil?
+      @cart_item.save
+    else
       new_amount = existing_cart_item.amount + @cart_item.amount
       existing_cart_item.update(amount: new_amount)
-      @cart_item.delete
-    else
-      @cart_item.save
-      redirect_to cart_items_path, notice: "カートに商品が入りました"
     end
+    redirect_to cart_items_path, notice: "カートに商品が入りました"
   end
 
   private
   def cart_item_params
       params.require(:cart_item).permit(:item_id, :amount)
   end
-
 end

@@ -101,6 +101,7 @@ ja:
   errors:
     format: "%{attribute}%{message}"
     messages:
+      record_invalid: "バリデーションに失敗しました: %{errors}"
       accepted: を受諾してください
       blank: を入力してください
       confirmation: と%{attribute}の入力が一致しません
