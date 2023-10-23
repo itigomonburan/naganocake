@@ -4,24 +4,24 @@
       <a class = "navbar-brand p-3" href="/"><%= image_tag('no_image.jpg', alt: 'Logo', height: '40', width: '120') %></a>
       <ul class="navbar-nav ml-auto">
       <% if customer_signed_in? %>
-        <div class = "text-white">
+        <div class = "text-white mx-5">
           ようこそ、<%= current_customer.last_name %>さん!
         </div>
-        <%= link_to "マイページ", customers_path, class:"btn btn-outline-secondary" %>
-        <%= link_to "商品一覧", items_path, class:"btn btn-outline-secondary" %>
-        <%= link_to "カートページ", cart_items_path, class:"btn btn-outline-secondary" %>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-outline-secondary" %>
+        <%= link_to "マイページ", customers_path, class:"btn btn-outline-secondary m-2" %>
+        <%= link_to "商品一覧", items_path, class:"btn btn-outline-secondary m-2" %>
+        <%= link_to "カートページ", cart_items_path, class:"btn btn-outline-secondary m-2" %>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-outline-secondary m-2" %>
       <% elsif admin_signed_in? %>
-        <%= link_to "商品一覧", admin_items_path, class:"btn btn-outline-secondary" %>
-        <%= link_to "会員一覧", admin_customers_path, class:"btn btn-outline-secondary" %>
-        <%= link_to "注文履歴一覧", admin_path,  class:"btn btn-outline-secondary" %>
-        <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-outline-secondary" %>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-outline-secondary" %>
+        <%= link_to "商品一覧", admin_items_path, class:"btn btn-outline-secondary m-2" %>
+        <%= link_to "会員一覧", admin_customers_path, class:"btn btn-outline-secondary m-2" %>
+        <%= link_to "注文履歴一覧", admin_path,  class:"btn btn-outline-secondary m-2" %>
+        <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-outline-secondary m-2" %>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-outline-secondary m-2" %>
       <% else %>
-        <%= link_to "商品一覧", items_path, class:"btn btn-outline-secondary" %>
-        <%= link_to "About", about_path, class:"btn btn-outline-secondary" %>
-        <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-outline-secondary" %>
-        <%= link_to "ログイン", new_customer_session_path, class:"btn btn-outline-secondary" %>
+        <%= link_to "商品一覧", items_path, class:"btn btn-outline-secondary m-2" %>
+        <%= link_to "About", about_path, class:"btn btn-outline-secondary m-2" %>
+        <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-outline-secondary m-2" %>
+        <%= link_to "ログイン", new_customer_session_path, class:"btn btn-outline-secondary m-2" %>
       <% end %>
       </ul>
     </div>
