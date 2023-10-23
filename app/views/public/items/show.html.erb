@@ -1,13 +1,15 @@
 <div class="container">
   <div class="row">
-        <br>
-        <br>
-        <br>
 
+    <div class = "col-2">
+      <%= render 'public/items/genre', genre: @genres %>
+    </div>
+
+     <div class="col-10 mt-2">
     <div class = "container-fluid" >
       <div class="row mx-auto">
         <div class = col-5>
-          <%= image_tag @item.get_image("100x100!") %>
+          <%= image_tag @item.get_image("300x200!") %>
         </div>
 
         <div class="col-6 offset-1">
@@ -39,10 +41,10 @@
               <h5 class="text-danger">売り切れ</h5>
             <% end %>
 
-        </div>
+          </div>
 
+        </div>
       </div>
     </div>
-
   </div>
 </div>

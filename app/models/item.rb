@@ -10,7 +10,7 @@ class Item < ApplicationRecord
     end
       image.variant(resize: size).processed
   end
-  
+
   def with_tax_price
     (price * 1.1).floor
   end
@@ -18,6 +18,11 @@ class Item < ApplicationRecord
 # 税込み
   def add_tax_price
     (self.price * 1.10).round
+  end
+
+  #検索機能
+  def self.search_for(content)
+    Item.where('name LIKE ?','%'+content+'%')
   end
 
   belongs_to :genre
