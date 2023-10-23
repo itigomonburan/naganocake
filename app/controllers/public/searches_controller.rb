@@ -8,4 +8,10 @@ class Public::SearchesController < ApplicationController
 # @items = Item.where(genre_id: @genre_id) ビュー（ジャンル検索部分）から送られてきたgenre_id`を持つ Itemを全て取得。
   end
 
+  def search
+    @content = params[:content]
+    @records = Item.search_for(@content)
+    @genres = Genre.all
+  end
+
 end
