@@ -3,7 +3,6 @@
     <div class="col">
       <h2>配送先編集</h2>
       <%= form_with model: @address, method: :patch do |f| %>
-
        <% if @address.errors.any? %>
           <%= @address.errors.count %>件のエラーが発生しました
           <ul>
