@@ -2,7 +2,6 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
-
   def get_image(size)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -10,7 +9,7 @@ class Item < ApplicationRecord
     end
       image.variant(resize: size).processed
   end
-  
+
   def with_tax_price
     (price * 1.1).floor
   end
@@ -20,9 +19,11 @@ class Item < ApplicationRecord
     (self.price * 1.10).round
   end
 
+  belongs_to :order
   belongs_to :genre
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
+  has_many :items, through: :order_details # 中間テーブルを経由してitemsと関連付ける
 
   validates :image, presence:true
   validates :name, presence:true, uniqueness: true

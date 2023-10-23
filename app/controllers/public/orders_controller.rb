@@ -30,7 +30,8 @@ class Public::OrdersController < ApplicationController
         @order.post_code = params[:order][:post_code]
         @order.address = params[:order][:address]
         @order.name = params[:order][:name]
-        unless @order.valid_columns?(:name, :address, :post_code)
+        unless @order.validates_exclusion_of(:name, :address, :post_code, in: [nil, ""])
+          # name, address, post_codeの値が空でないことを確認
           @addresses = current_customer.addresses
           render :new
         end
@@ -43,8 +44,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-
-    @order.save!
+    @order.save
 
     current_customer.cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
