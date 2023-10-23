@@ -10,6 +10,10 @@ class Public::SearchesController < ApplicationController
 
   def search
     @content = params[:content]
+    if @content.blank?
+      flash[:notice] = '検索キーワードを入力してください。'
+      redirect_to request.referer
+    end
     @records = Item.search_for(@content)
     @genres = Genre.all
   end

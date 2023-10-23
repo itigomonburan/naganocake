@@ -7,6 +7,7 @@
   </ul>
   <% end %>
 
+  <div class="col-10">
     <%= form_with model: address, method: :post do |f| %>
       <table>
         <tr>
@@ -15,8 +16,9 @@
         </tr>
         <tr>
           <td>住所</td>
-          <td><%= f.text_field :address,placeholder:"東京都渋谷区代々木神園町0-0" %></td>
-        </tr>
+          <td colspan="3">
+            <%= f.text_field :address, style: "width: 100%;", placeholder: "東京都渋谷区代々木神園町0-0" %>
+          </td>
         <tr>
           <td>宛名</td>
           <td><%= f.text_field :name,placeholder:"令和道子" %></td>
@@ -27,4 +29,5 @@
           <td><%= f.submit "新規登録", class:"btn btn-success" %></td>
         </tr>
       </table>
-      <% end %>
+    <% end %>
+  </div>

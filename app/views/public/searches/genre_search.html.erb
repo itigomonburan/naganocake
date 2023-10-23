@@ -9,7 +9,7 @@
       <div class="search-items d-flex flex-wrap">
         <% @items.each do |item| %>
           <div class="search-item mr-4">
-            <%= image_tag item.image, width: 200, height: 150 %>
+            <%= image_tag item.image, size: "200x150" %>
             <div><%= link_to item.name, item_path(item.id) %></div>
             <div>￥<%= item.price.to_s(:delimited) %></div>
               <% if item.is_active == true %>
