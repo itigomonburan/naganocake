@@ -6,17 +6,9 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
   end
 
-  def show
-    @order = Order.find(params[:id])
-    @order_details = OrderDetail.where(order_id: @order.id)
-  end
-
-  def index
-    @orders = current_customer.orders.page(params[:page]).order(created_at: :desc)
-  end
-
   def confirm
-      @order = Order.new(order_params)
+      @order = Order.new(order_params.except(:address_id))
+        @customer = current_customer
       if params[:order][:select_address] == "0"#顧客の住所
         @order.name = current_customer.last_name + current_customer.first_name
         @order.address =  current_customer.address
@@ -30,11 +22,10 @@ class Public::OrdersController < ApplicationController
         @order.post_code = params[:order][:post_code]
         @order.address = params[:order][:address]
         @order.name = params[:order][:name]
-        unless @order.validates_exclusion_of(:name, :address, :post_code, in: [nil, ""])
+      unless @order.valid_columns?(:name, :address, :post_code)
           # name, address, post_codeの値が空でないことを確認
-          @addresses = current_customer.addresses
           render :new
-        end
+      end
       else
       redirect_to new_order_path
       end
@@ -60,6 +51,20 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
+  end
+
+  def index
+    @orders = current_customer.orders.page(params[:page]).order(created_at: :desc)
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: @order.id)
+    if @order
+    @order_details = OrderDetail.where(order_id: @order.id)
+    else
+      # redirect_to request.referer# レコードが見つからなかった場合の処理
+    end
   end
 
   private
