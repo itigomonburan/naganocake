@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class = "col-2">
+      <%= render 'public/items/genre', genre: @genres %>
+    </div>
+
+    <div class="col-10 mt-2">
+      <h2>検索結果</h2>
+      <div class="search-items d-flex flex-wrap">
+        <% @records.each do |data| %>
+        <div class="search-item mr-4">
+          <%= image_tag data.image, size: "200x150" %>
+          <div><%= link_to data.name, item_path(data.id) %></div>
+          <div>￥<%= data.price.to_s(:delimited) %></div>
+            <% if data.is_active == true %>
+              <p class="text-success">販売中</p>
+            <% else %>
+              <p class="text-danger">販売停止中です</p>
+           <% end %>
+          </div>
+        <% end %>
+      </div>
+
+
+      <% if @records.empty? %>
+        <p class="text-danger">該当する商品はありません</p>
+      <% end %>
+    </div>
+  </div>
+</div>

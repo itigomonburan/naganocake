@@ -1,17 +1,8 @@
-<div class='container px-5 px-sm-0'>
+<div class='container my-3'>
   <div class='row'>
     <div class='col'>
-      <h1>注文履歴一覧</h1>
-      <% if admin_signed_in? %>
-        <li>
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "ログイン", new_admin_session_path %>
-        </li>
-      <% end %>
-      <table class='table table-hover'>
+      <h2>注文履歴一覧</h2>
+      <table class='table table-hover table-sm'>
         <thead class="thead-light">
           <tr>
             <th>購入日時</th>
@@ -36,7 +27,9 @@
           <% end %>
         </tbody>
       </table>
-      <%= paginate @orders %>
     </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <%= paginate @orders %>
   </div>
 </div>

@@ -19,6 +19,11 @@ class Item < ApplicationRecord
     (self.price * 1.10).round
   end
 
+  #検索機能
+  def self.search_for(content)
+    Item.where('name LIKE ?','%'+content+'%')
+  end
+  
   belongs_to :order
   belongs_to :genre
   has_many :cart_items, dependent: :destroy
