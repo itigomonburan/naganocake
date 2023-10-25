@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-center my-2">
     <div class="col">
-      <h2>配送先編集</h2>
+      <h3>配送先編集</h3>
       <%= form_with model: @address, method: :patch do |f| %>
        <% if @address.errors.any? %>
           <%= @address.errors.count %>件のエラーが発生しました
@@ -12,7 +12,7 @@
           </ul>
         <% end %>
 
-      <table>
+      <table class="mx-4 table-sm">
         <tr>
           <td>郵便番号</td>
           <td><%= f.text_field :post_code %></td>
@@ -28,7 +28,7 @@
         <tr>
           <td></td>
           <td></td>
-          <td><%= f.submit "変更内容を保存", class:"btn btn-success" %></td>
+          <td><%= f.submit "　変更内容を保存　", class:"btn btn-success" %></td>
         </tr>
       </table>
       <% end %>

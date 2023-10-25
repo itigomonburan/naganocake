@@ -6,10 +6,10 @@
     <% end %>
   </ul>
   <% end %>
-
+<div class="d-flex align-items-center my-3">
   <div class="col-10">
     <%= form_with model: address, method: :post do |f| %>
-      <table>
+      <table class="mx-4 table-sm">
         <tr>
           <td>郵便番号(ハイフンなし)</td>
           <td><%= f.text_field :post_code,placeholder:"0000000" %></td>
@@ -31,3 +31,4 @@
       </table>
     <% end %>
   </div>
+</div>

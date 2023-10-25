@@ -5,18 +5,18 @@
       <%= render 'public/items/genre', genre: @genres %>
     </div>
 
-     <div class="col-10 mt-2">
+     <div class="col-10 my-2">
     <div class = "container-fluid" >
       <div class="row mx-auto">
-        <div class = col-5>
+        <div class = col-px-auto>
           <%= image_tag @item.get_image("300x200!") %>
         </div>
 
-        <div class="col-6 offset-1">
+        <div class="col">
          <table class="table table-borderless">
 
           <tr>
-           <td><%= @item.name %></td>
+           <th><%= @item.name %></th>
           </tr>
           <tr>
            <td><%= @item.description %></td>
@@ -34,14 +34,14 @@
                 <div class="form-group d-flex w-75">
                   <%= f.select :amount, *[1..10], {include_blank: '個数選択'}, class: "form-control mr-4" %>
                   <%= f.hidden_field :item_id, :value => @item.id %>
-                  <%= f.submit "カートに入れる", class: "button btn btn-success text-nowrap" %>
+                  <%= f.submit "　カートに入れる　", class: "button btn btn-success text-nowrap" %>
                 </div>
               <% end %>
               <% else %>
               <h5 class="text-danger">売り切れ</h5>
             <% end %>
 
-          </div>
+        </div>
 
         </div>
       </div>
