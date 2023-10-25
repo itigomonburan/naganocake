@@ -6,7 +6,9 @@
 
     <div class="col-10 mt-2 mb-2">
       <h3>検索結果（全<%= @items_all %>件）</h3><br>
+
       <div class="search-items d-flex flex-wrap">
+
         <% @records.each do |data| %>
         <div class="search-item mr-4">
           <%= image_tag data.image, size: "200x150" %>
