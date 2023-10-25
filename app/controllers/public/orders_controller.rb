@@ -63,7 +63,7 @@ class Public::OrdersController < ApplicationController
     if @order
     @order_details = OrderDetail.where(order_id: @order.id)
     else
-      # redirect_to request.referer# レコードが見つからなかった場合の処理
+    redirect_to request.referer# レコードが見つからなかった場合の処理
     end
   end
 
