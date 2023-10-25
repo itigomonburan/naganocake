@@ -27,6 +27,7 @@ class Item < ApplicationRecord
   
   belongs_to :order, optional: true
   belongs_to :genre, optional: true
+
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
   has_many :items, through: :order_details # 中間テーブルを経由してitemsと関連付ける
