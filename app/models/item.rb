@@ -24,9 +24,10 @@ class Item < ApplicationRecord
   def self.search_for(content)
     Item.where('name LIKE ?','%'+content+'%')
   end
+  
+  belongs_to :order, optional: true
+  belongs_to :genre, optional: true
 
-  belongs_to :order,optional: true
-  belongs_to :genre,optional: true
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
   has_many :items, through: :order_details # 中間テーブルを経由してitemsと関連付ける
