@@ -11,7 +11,7 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = "登録されました"
       redirect_to admin_genres_path
     else
-      flash[:notice] = "登録失敗ました"
+      flash[:notice] = "登録失敗しました"
       @genres = Genre.all
       render :index
     end
@@ -27,7 +27,7 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = "編集されました"
       redirect_to admin_genres_path
     else
-      flash[:notice] = "編集失敗ました"
+      flash[:notice] = "編集失敗しました"
       render :edit
     end
   end
