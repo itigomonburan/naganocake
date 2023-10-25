@@ -11,6 +11,7 @@ class Order < ApplicationRecord
   enum payment_method: { credit_card: 0, transfer: 1 }
   enum status: { payment_waiting: 0, payment_confirmation: 1, in_production: 2, preparing_delivery: 3, delivered: 4 }
 
+
   validates :amount_billed, presence:true
   validates :shipping_cost, presence:true
   validates :payment_method, presence:true
@@ -27,4 +28,12 @@ class Order < ApplicationRecord
     errors.empty?
   end
 
+  
+  def subtotal
+    item.with_tax_price * amount
+  end
+  
+  def with_tax_price
+    (price * 1.1).floor
+  end
 end

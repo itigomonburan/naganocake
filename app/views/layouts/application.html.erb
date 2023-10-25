@@ -10,7 +10,9 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   <body>
+    <header class="header">
     <%= render 'layouts/header' %>
+    </header>
     <main>
       <div class="container">
         <%= flash[:error] %>
@@ -18,7 +20,7 @@
       </div>
       <%= yield %>
     </main>
-    <footer class="bg-dark pt-5 pb-4">
+    <footer class="pt-5 pb-4">
       <div class="container">
         <div class="row">
         </div>
