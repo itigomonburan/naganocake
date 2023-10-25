@@ -9,7 +9,10 @@ class OrderDetail < ApplicationRecord
   enum making_status: { start_not_posssible: 0, production_pending: 1, in_production: 2, production_complete: 3 }
 
   def price_including_tax
-    (price * 1.1).floor # 税率は10%と仮定
+    (price * 1.1).to_i # 税率は10%と仮定
   end
-
+  
+  def subtotal
+    item.with_tax_price * amount
+  end
 end
