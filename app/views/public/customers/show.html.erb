@@ -1,52 +1,55 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h2>マイページ</h2>
-        <div class="d-flex" >
-          <h4>登録情報</h4>
-          <%= link_to "編集する", customers_edit_path, class:"btn btn-success" %>
+<div class='container px-5 px-sm-0'>
+  <div class='row m-4'>
+    <div class='col-mb4'>
+      <h3>マイページ</h3>
+
+        <div class="d-flex align-items-center mb-3">
+          <h5>登録情報　</h5>
+          <%= link_to "　編集する　", customers_edit_path, class:"btn btn-success  ms-2" %>
         </div>
 
-        <table class="table table-bordered">
+        <table class='table table-bordered'>
+          <thead class="thead-light">
           <tr>
-            <td>氏名</td>
+            <th>氏名</th>
             <td>
               <%= @customer.last_name %>
               <%= @customer.first_name %>
             </td>
           </tr>
           <tr>
-            <td>カナ</td>
+            <th>カナ</th>
             <td>
               <%= @customer.last_name_kana %>
               <%= @customer.first_name_kana %>
             </td>
           </tr>
           <tr>
-            <td>郵便番号</td>
+            <th>郵便番号</th>
             <td><%= @customer.post_code %></td>
           </tr>
           <tr>
-            <td>住所</td>
+            <th>住所</th>
             <td><%= @customer.address %></td>
           </tr>
           <tr>
-            <td>電話番号</td>
+            <th>電話番号</th>
             <td><%= @customer.phone_number %></td>
           </tr>
           <tr>
-            <td>メールアドレス</td>
+            <th>メールアドレス</th>
             <td><%= @customer.email %></td>
           </tr>
+          </thead>
         </table>
 
-      <div class="d-flex" >
-        <h4>配送先</h4>
-        <%= link_to "一覧を見る", addresses_path, class:"btn btn-primary" %>
+      <div class="d-flex align-items-center">
+        <h4>配送先　</h4>
+        <%= link_to "　一覧を見る　", addresses_path, class: "btn btn-primary ms-2" %>
       </div>
-      <div class="d-flex" >
-        <h4>注文履歴</h4>
-        <%= link_to "一覧を見る", orders_path, class:"btn btn-primary" %>
+      <div class="d-flex align-items-center mt-3">
+        <h4>注文履歴　</h4>
+        <%= link_to "　一覧を見る　", orders_path, class: "btn btn-primary ms-2" %>
       </div>
 
     </div>

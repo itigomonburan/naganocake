@@ -4,9 +4,9 @@
       <%= render 'public/items/genre', genre: @genres %>
     </div>
 
-    <div class="col-10 mt-2">
-      <h2>検索結果</h2>
-      <div class="search-items d-flex flex-wrap">
+    <div class="col-10 mt-2 mb-2">
+      <h3>検索結果（全<%= @items_all %>件）</h3><br>
+      <div class="search-items d-flex flex-wrap justify-content-center">
         <% @records.each do |data| %>
         <div class="search-item mr-4">
           <%= image_tag data.image, size: "200x150" %>
@@ -20,11 +20,13 @@
           </div>
         <% end %>
       </div>
-
-
       <% if @records.empty? %>
         <p class="text-danger">該当する商品はありません</p>
       <% end %>
+
+      <div class="pagination d-flex justify-content-center">
+        <%= paginate @records %>
+      </div>
     </div>
   </div>
 </div>
