@@ -1,41 +1,82 @@
-
+<nav class="navbar navbar-expand-lg navbar-light">
   <div class = "container" >
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <a class = "navbar-brand" href="/"><%= image_tag('logo.jpg', alt: 'Logo', height: '60', width: '180') %></a>
 
-      <ul class="navbar-nav ml-auto">
+      <%= link_to root_path do %>
+        <%= image_tag "logo.jpg", alt: "Logo", size:"340x90" %>
+      <% end %>
 
+      <div class = "ml-auto">
         <div class="row justify-content-between align-items-center">
         <% if customer_signed_in? %>
-          <div class="col text-center text-secondary">ようこそ、<%= current_customer.last_name %>さん!</div>
-          <%= link_to "マイページ", customers_path, class:"btn btn-outline-secondary m-2" %>
-          <%= link_to "商品一覧", items_path, class:"btn btn-outline-secondary m-2" %>
-          <%= link_to "カートページ", cart_items_path, class:"btn btn-outline-secondary m-2" %>
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-outline-secondary m-2" %>
+          <div class="col text-center" style="color: brown;">ようこそ、<%= current_customer.last_name %>さん!</div>
+
+          <%= link_to customers_path, class:"btn m-2", style: "color: brown" do %>
+            マイページ <i class="fas fa-user"></i>
+          <% end %>
+
+          <%= link_to items_path, class:"btn m-2", style: "color: brown" do %>
+           商品一覧 <i class="fas fa-cheese"></i>
+          <% end %>
+
+          <%= link_to cart_items_path, class:"btn m-2", style: "color: brown" do %>
+            カート<i class="fas fa-shopping-cart"></i>
+          <% end %>
+
+          <%= link_to destroy_customer_session_path, method: :delete, class:"btn m-2", style: "color: brown" do %>
+            ログアウト<i class="fas fa-sign-out-alt"></i>
+          <% end %>
+
         <% elsif admin_signed_in? %>
-          <%= link_to "商品一覧", admin_items_path, class:"btn btn-outline-secondary m-2" %>
-          <%= link_to "会員一覧", admin_customers_path, class:"btn btn-outline-secondary m-2" %>
-          <%= link_to "注文履歴一覧", admin_path,  class:"btn btn-outline-secondary m-2" %>
-          <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-outline-secondary m-2" %>
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-outline-secondary m-2" %>
+          <%= link_to admin_items_path, class:"btn m-2", style: "color: brown" do %>
+            商品一覧 <i class="fas fa-cheese"></i>
+          <% end %>
+
+          <%= link_to admin_customers_path, class:"btn m-2", style: "color: brown" do %>
+            会員一覧 <i class="fas fa-users"></i>
+          <% end %>
+
+          <%= link_to admin_path, class:"btn m-2", style: "color: brown" do %>
+            注文履歴一覧 <i class="fas fa-truck"></i>
+          <% end %>
+
+          <%= link_to admin_genres_path, class:"btn m-2", style: "color: brown" do %>
+            ジャンル一覧 <i class="fas fa-list"></i>
+          <% end %>
+
+          <%= link_to destroy_admin_session_path, method: :delete, class:"btn m-2", style: "color: brown" do %>
+            ログアウト<i class="fas fa-sign-out-alt"></i>
+          <% end %>
+
         <% else %>
-          <%= link_to "商品一覧", items_path, class:"btn btn-outline-secondary m-2" %>
-          <%= link_to "About", about_path, class:"btn btn-outline-secondary m-2" %>
-          <%= link_to "新規登録", new_customer_registration_path, class:"btn btn-outline-secondary m-2" %>
-          <%= link_to "ログイン", new_customer_session_path, class:"btn btn-outline-secondary m-2" %>
+          <%= link_to about_path, class:"btn m-2", style: "color: brown" do %>
+            About <i class="fas fa-apple-alt"></i>
+          <% end %>
+
+          <%= link_to items_path, class:"btn m-2", style: "color: brown"  do %>
+            商品一覧 <i class="fas fa-cheese"></i>
+          <% end %>
+
+          <%= link_to new_customer_registration_path, class:"btn m-2", style: "color: brown"  do %>
+            新規登録 <i class="fas fa-user-plus"></i>
+          <% end %>
+
+          <%= link_to new_customer_session_path, class:"btn m-2", style: "color: brown" do %>
+            ログイン <i class="fas fa-sign-in-alt"></i>
+          <% end %>
         <% end %>
         </div>
 
-      </ul>
-    </nav>
-    <div class="container ">
-      <div class="row justify-content-end">
-        <div class="serch_form mb-2">
-          <%= form_with url:search_path, method: :get, local: true do |f| %>
-            <%= f.text_field :content,placeholder:"Search" %>
-            <%= f.submit '検索', class:"btn btn-outline-secondary" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
+          <div class="row">
+            <div class="serch_form mb-2 ml-auto">
+              <%= form_with url:search_path, method: :get, local: true do |f| %>
+                <%= f.text_field :content, placeholder:"商品検索" %>
+                <%= f.button class: "btn", style: "color: brown" do %>
+                  <i class="fas fa-search"></i> 検索
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
+     </div>
   </div>
+</nav>

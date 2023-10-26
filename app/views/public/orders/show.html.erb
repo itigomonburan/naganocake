@@ -35,15 +35,15 @@
           <table class="table table-list">
             <tr>
               <td class="title-background">商品合計</td>
-              <td><%= (@order.price - @order.shipping_cost).to_s(:delimited) %></td>
+              <td><%= @order.price.to_s(:delimited) %></td>
             </tr>
             <tr>
               <td class="title-background">配送料</td>
-              <td><%= @order.shipping_cost.to_s(:delimited) %></td>
+              <td><%= @order.shipping_cost %></td>
             </tr>
             <tr>
               <td class="title-background">ご請求額</td>
-              <td><%= @order.price.to_s(:delimited) %></td>
+              <td><%= @order.amount_billed.to_s(:delimited)%></td>
             </tr>
           </table>
         </div>
@@ -61,9 +61,9 @@
             <% @order_details.each do |order_detail| %>
               <tr>
                 <td><%= order_detail.item.name %></td>
-                <td><%= order_detail.price_including_tax.to_s(:delimited) %></td>
+                <td><%= order_detail.price.to_s(:delimited)%></td>
                 <td><%= order_detail.amount %></td>
-                <td><%= (order_detail.price_including_tax * order_detail.amount).to_s(:delimited) %></td>
+                <td><%= order_detail.subtotal.to_s(:delimited) %></td>
               </tr>
             <% end %>
           </table>
