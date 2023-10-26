@@ -8,7 +8,7 @@
         <%= image_tag "muscat.jpg",class: "card-img" %>
         <div class="card-img-overlay d-flex">
           <div class="m-auto">
-            <p class=" text-center bg-light text-secondary">ようこそながのCAKEへ!<br>
+            <p class="text-center" style="background-color: rgba(255, 255, 255, 0.8);">ようこそながのCAKEへ!<br>
                                 このサイトは、ケーキのECサイトになります。<br>
                                 会員でない方も商品の閲覧はできますが、<br>
                                 購入には会員登録が必要になります。
@@ -22,20 +22,19 @@
         <div class="search-items d-flex flex-wrap">
         <% @items.each do |item| %>
           <div class="search-item mr-4">
-            <%= image_tag item.image, size: "200x150" %>
-            <div><%= link_to item.name, item_path(item.id) %></div>
-            <div>￥<%= item.price.to_s(:delimited) %></div>
-            <% if item.is_active == true %>
-                <div class="text-success">販売中</div>
-              <% else %>
-                <div class="text-danger">販売停止中です</div>
+            <div>
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.image, size: "200x150" %>
               <% end %>
+            </div>
+            <div><%=  item.name %></div>
+            <div>￥<%= item.price.to_s(:delimited) %></div>
           </div>
         <% end %>
       </div>
     </div>
     <div class="text-right">
-      <%= link_to "全ての商品を見る>", items_path %>
+      <%= link_to "全ての商品を見る>", items_path, style: "color: black;" %>
     </div>
   </div>
 </div>
