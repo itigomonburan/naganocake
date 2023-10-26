@@ -11,8 +11,12 @@
 
         <% @records.each do |data| %>
         <div class="search-item mr-4">
-          <%= image_tag data.image, size: "200x150" %>
-          <div><%= link_to data.name, item_path(data.id) %></div>
+          <div>
+            <%= link_to item_path(data.id) do %>
+              <%= image_tag data.image, size: "200x150" %>
+            <% end %>
+          </div>
+          <div><%=  data.name %></div>
           <div>￥<%= data.price.to_s(:delimited) %></div>
             <% if data.is_active == true %>
               <p class="text-success">販売中</p>

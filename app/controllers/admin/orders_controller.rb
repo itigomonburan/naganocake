@@ -6,8 +6,13 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @status = Order.find(params[:id])
-    @status.update(order_params)
+    if @status.update(order_params)
+      if @status.status == "payment_confirmation"
+      @status.order_details.update(making_status: "production_pending")
+      end
     redirect_to request.referer, notice: '注文ステータスを更新しました。'
+   
+    end
   end
 
   private

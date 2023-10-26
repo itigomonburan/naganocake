@@ -1,10 +1,16 @@
 class Admin::OrderDetailsController < ApplicationController
-    before_action :authenticate_admin!
+  before_action :authenticate_admin!
   def update
-    @status = OrderDetail.find(params[:id])
-    @status.update(order_detail_params)
+    @order_detail = OrderDetail.find(params[:id])
+    if @order_detail.update(order_detail_params)
+      order = @order_detail.order
+      if order.order_details.all? { |detail| detail.making_status == "production_complete" }
+      order.update(status: "preparing_delivery")
+      end
     redirect_to request.referer, notice: '制作ステータスを更新しました。'
+    end
   end
+
 
   private
   def order_detail_params
