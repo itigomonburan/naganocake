@@ -24,7 +24,7 @@ class Item < ApplicationRecord
   def self.search_for(content)
     Item.where('name LIKE ?','%'+content+'%')
   end
-  
+
   belongs_to :order, optional: true
   belongs_to :genre, optional: true
 

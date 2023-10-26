@@ -11,6 +11,7 @@
     <div class="search-items d-flex flex-wrap">
         <% @items.each do |item| %>
           <div class="search-item mr-4">
+
             <div>
               <%= link_to item_path(item.id) do %>
                 <%= image_tag item.image, size: "200x150" %>
