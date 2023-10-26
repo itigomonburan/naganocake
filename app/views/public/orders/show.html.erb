@@ -35,7 +35,7 @@
           <table class="table table-list">
             <tr>
               <td class="title-background">商品合計</td>
-              <td><%= (@order.price - @order.shipping_cost).to_s(:delimited) %></td>
+              <td><%= @order.price.to_s(:delimited) %></td>
             </tr>
             <tr>
               <td class="title-background">配送料</td>
