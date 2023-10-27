@@ -6,7 +6,7 @@
   <div class="row">
 
       <table class="table table-list table-bordered">
-        <thead class="thead-light">
+        <thead>
           <tr class="title-background">
             <th>注文日</th>
             <th>配送先</th>
@@ -34,9 +34,9 @@
             </td>
             <td><%= order.price.to_s(:delimited) %>円</td>
             <td><%= order.status_i18n %></td>
-            <th>
+            <td>
               <%= link_to '表示する', order_path(order), class:"btn btn-info" %>
-            </th>
+            </td>
           </tr>
         <% end %>
       </table>
