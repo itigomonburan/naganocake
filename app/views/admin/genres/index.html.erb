@@ -2,13 +2,13 @@
   <div>
     <h2>ジャンル一覧・追加</h2>
   </div>
+  <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
   <table>
-    <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
       <td>ジャンル名</td>
       <td><%= f.text_field :name,placeholder:"ジャンル名", class: "m-5" %></td>
       <td><%= f.submit '新規登録', class: "btn btn-success" %></td>
-    <% end %>
   </table>
+  <% end %>
   <div class="row">
     <div class="col-5">
       <table class="table table-sm">
