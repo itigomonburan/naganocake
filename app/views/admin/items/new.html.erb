@@ -1,5 +1,8 @@
 <div class="container">
-  <h2>商品新規登録</h2>
+  <br>
+  <div class="row mt-2 mb-3 offset-1">
+    <h3>商品新規登録</h3>
+  </div>
   <div>
       <% if @item.errors.any? %>
         <%= @item.errors.count %>件のエラーが発生しました
@@ -35,7 +38,12 @@
           </tr>
           <tr>
             <td><%= f.label :税抜価格 %></td>
-            <td><%= f.text_field :price, placeholder: "1,000", class: "form-control" %>円</td>
+            <td>
+             <div class="d-flex align-items-center">
+              <%= f.text_field :price, placeholder: "1000", class: "form-control" %>
+              <span class="ml-2">円</span>
+             </div>
+            </td>
             <td></td>
           </tr>
           <tr>
