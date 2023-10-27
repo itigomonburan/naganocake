@@ -5,4 +5,15 @@ header {
 
 footer {
   background-color: #efe7de;
+
+}
+
+th {
+  background-color: brown;
+  color: white;
+}
+
+.no-bg th {
+  background-color: transparent; /* 背景色を透明に設定 */
+  color: black;
 }
