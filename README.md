@@ -2,9 +2,9 @@
  
 Instagramから人気となった、長野県にある小さな洋菓子店のECサイトです
  
-# DEMO
+# トップページ
  
-"hoge"の魅力が直感的に伝えわるデモ動画や図解を載せる
+魅力が直感的に伝えわるデモ動画や図解を載せる
  
 # 機能詳細
 
@@ -76,17 +76,16 @@ Instagramから人気となった、長野県にある小さな洋菓子店のEC
  
 # インストール
  
-Requirementで列挙したライブラリなどのインストール方法を説明する
- 
 ```bash
-$ git clone 
+$ git clone <GitHubのリポジトリURL>
+$ cd naganocake
+$ bundle install
+$ rails db:migrate
+$ rails s
 ```
- 
-# Note
- 
-注意点などがあれば書く
- 
+
 # 作成者
+
 * なべ
 * つじたん
 * レオっち
