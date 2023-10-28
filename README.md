@@ -4,7 +4,8 @@ Instagramから人気となった、長野県にある小さな洋菓子店のEC
  
 # トップページ
  
-魅力が直感的に伝えわるデモ動画や図解を載せる
+![naganocake](https://github.com/itigomonburan/naganocake/assets/141891762/82f10607-51c3-4f44-a7f5-d1b745207fdd)
+
  
 # 機能詳細
 
