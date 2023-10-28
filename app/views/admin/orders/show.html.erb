@@ -4,7 +4,6 @@
       <h2>注文履歴詳細</h2>
     </div>
     <table class="table table-borderless">
-      <thead class="no-bg">
       <tr>
         <th>購入者</th>
         <td><%= link_to @order.customer.last_name + @order.customer.first_name, admin_customer_path(@order.customer) %></td>
@@ -33,13 +32,12 @@
             <% end %>
         </td>
       </tr>
-      </thead>
     </table>
   </div>
   <div class="row">
     <div class="col-7">
       <table class="table table-sm">
-        <thead>
+        <thead class="thead-light">
           <th>商品名</th>
           <th>単価（税込み）</th>
           <th>数量</th>
